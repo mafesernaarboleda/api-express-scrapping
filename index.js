@@ -4,7 +4,7 @@
  */
 
 const express = require('express');
-const https = require('https');
+const http = require('http');
 const winston = require('winston');
 const config = require('./src/config');
 const routeConfig = require('./routes');
@@ -20,7 +20,7 @@ app.use((req, res, next) => {
     next();
 });
 
-const server = https.createServer(app);
+const server = http.createServer(app);
 routeConfig(app);
 
 function startServer() {
