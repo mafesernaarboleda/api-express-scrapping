@@ -4,14 +4,15 @@
  */
 
 const express = require('express');
-const http = require('http');
+const https = require('https');
 const winston = require('winston');
 const config = require('./src/config');
 const routeConfig = require('./routes');
 
 
 const app = express();
-const server = http.createServer(app);
+
+const server = https.createServer(app);
 routeConfig(app);
 
 function startServer() {
