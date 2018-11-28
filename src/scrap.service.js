@@ -18,9 +18,11 @@ function find(name, res) {
         rp(options)
             .then(($) => {
                 $('li').each((i, elem) => {
+                    const imageStyle = $(elem).find($('.deck-image')).attr('style')
+                    const imageData = $(elem).find($('.deck-image')).data()
                     let pre = {
                         ...$(elem).data().id && $(elem).data(),
-                        ...$(elem).find($('.deck-image')).data() 
+                        imageUrl: (imageStyle && imageStyle.match(/url\(["']?([^"']*)["']?\)/)[1]) || (imageData && imageData.imageUrl)
                     }
                     presentations.push(pre)
                 });
